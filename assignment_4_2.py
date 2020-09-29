@@ -85,11 +85,9 @@ query=input("query:")
 print(query)
 for quote in data_list:
 	found_at=quote.find(query)
-	if(query=="or"):
-		if(found_at>=0):
-			print("Found:","...."+quote[found_at:found_at+50],"...")
-	else if (query=="And"):
-		if(found_at>=0):
-			print("found it" + quote[found_at:faount_at+50])
+	if(found_at>=0):
+		print("Found:","...."+quote[found_at:found_at+50],"...")
+	if(found_at>=0):
+		print("found it" + quote[found_at:faount_at+50])
 	else:
 		print("Thankyou")
