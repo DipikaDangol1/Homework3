@@ -81,13 +81,38 @@ data_list=["And now here is my secret, a very simple secret: It is only with the
 "It's good to have a friend. Even if you're going to die.",
 "If you love a flower that lives on a star, then it's good at night, to look up at the sky. All the stars are blossoming."]
 
-query=input("query:")
-print(query)
+query = input("query:")
+
+words = query.split()
+term1 = "or"
+term2 = "and"
+executeAnd = True
+
+if term1 in words: 
+    words.remove(term1)
+    executeAnd = False
+
+if term2 in words: 
+    words.remove(term2)
+    executeAnd = True
+    
+found = True
+found_list = []
+
 for quote in data_list:
-	found_at=quote.find(query)
-	if(found_at>=0):
-		print("Found:","...."+quote[found_at:found_at+50],"...")
-	if(found_at>=0):
-		print("found it" + quote[found_at:faount_at+50])
-	else:
-		print("Thankyou")
+    found = True
+    for w in words:
+        idx = quote.find(w)
+        if idx > -1:
+            if not executeAnd:
+                found_list.append(quote)
+                break;
+            else:
+                found = found and True
+        else:
+            found = False
+                
+    if executeAnd and found:
+        found_list.append(quote)
+
+print(found_list)
